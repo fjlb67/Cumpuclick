@@ -1,1 +1,1192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompuClick – Soporte Remoto Profesional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #0A66C8;
+  --blue-dark: #084EA0;
+  --blue-light: #E8F2FF;
+  --blue-mid: #C8DEFA;
+  --purple: #6B3FA0;
+  --green: #25D366;
+  --text: #1A1A2E;
+  --text-mid: #4A5568;
+  --text-muted: #718096;
+  --border: #E2E8F0;
+  --bg: #FFFFFF;
+  --bg-soft: #F7F9FC;
+  --bg-hero: #F0F5FF;
+  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow: 0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+  --shadow-md: 0 8px 32px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.06);
+  --shadow-blue: 0 8px 32px rgba(10,102,200,.18);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--blue);
+  letter-spacing: -.3px;
+}
+.nav-logo-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.nav-center { display: flex; gap: 4px; list-style: none; }
+.nav-center a {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: background .15s, color .15s;
+}
+.nav-center a:hover { background: var(--bg-soft); color: var(--blue); }
+.nav-right { display: flex; gap: 10px; align-items: center; }
+.btn-ghost {
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: .88rem; font-weight: 600;
+  color: var(--text-mid);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all .15s;
+  cursor: pointer; background: transparent;
+}
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+.btn-nav-primary {
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: .88rem; font-weight: 700;
+  color: #fff;
+  background: var(--blue);
+  text-decoration: none;
+  border: none; cursor: pointer;
+  transition: background .15s, box-shadow .15s;
+}
+.btn-nav-primary:hover { background: var(--blue-dark); box-shadow: var(--shadow-blue); }
+.btn-wa-nav {
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: .88rem; font-weight: 600;
+  color: #fff;
+  background: var(--green);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 6px;
+  transition: opacity .15s, box-shadow .15s;
+}
+.btn-wa-nav:hover { opacity: .9; box-shadow: 0 4px 16px rgba(37,211,102,.35); }
+
+/* ── HERO ── */
+#hero {
+  background: linear-gradient(160deg, var(--bg-hero) 0%, #EEF4FF 50%, #F5EFFF 100%);
+  padding: 90px 48px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .78rem; font-weight: 600;
+  color: var(--blue);
+  background: var(--blue-light);
+  border: 1px solid var(--blue-mid);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  letter-spacing: .3px;
+}
+.hero-eyebrow span { width: 7px; height: 7px; background: var(--blue); border-radius: 50%; display: inline-block; }
+.hero-title {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -.6px;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.hero-title em { font-style: normal; color: var(--blue); }
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 480px;
+  font-weight: 400;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: var(--blue);
+  color: #fff; font-weight: 700; font-size: .95rem;
+  border-radius: 9px; text-decoration: none; border: none; cursor: pointer;
+  transition: background .15s, box-shadow .15s, transform .15s;
+}
+.btn-primary:hover { background: var(--blue-dark); box-shadow: var(--shadow-blue); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: #fff;
+  color: var(--text); font-weight: 600; font-size: .95rem;
+  border-radius: 9px; text-decoration: none;
+  border: 1.5px solid var(--border); cursor: pointer;
+  transition: all .15s;
+}
+.btn-secondary:hover { border-color: var(--blue); color: var(--blue); box-shadow: var(--shadow-sm); }
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: var(--green);
+  color: #fff; font-weight: 700; font-size: .95rem;
+  border-radius: 9px; text-decoration: none; border: none; cursor: pointer;
+  transition: opacity .15s, box-shadow .15s, transform .15s;
+}
+.btn-whatsapp:hover { opacity: .92; box-shadow: 0 6px 24px rgba(37,211,102,.35); transform: translateY(-1px); }
+
+.hero-trust { display: flex; gap: 24px; flex-wrap: wrap; }
+.trust-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .83rem; color: var(--text-muted); font-weight: 500;
+}
+.trust-check {
+  width: 20px; height: 20px; background: var(--blue-light);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--blue); font-size: .7rem; font-weight: 800;
+}
+
+/* Hero visual */
+.hero-visual { position: relative; display: flex; flex-direction: column; gap: 16px; }
+.tv-mockup {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.tv-titlebar {
+  background: #F7F9FC;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tv-dots { display: flex; gap: 5px; }
+.tv-dot { width: 10px; height: 10px; border-radius: 50%; }
+.tv-dot-r { background: #FF5F57; }
+.tv-dot-y { background: #FEBC2E; }
+.tv-dot-g { background: #28C840; }
+.tv-bar {
+  flex: 1;
+  background: #E2E8F0;
+  height: 22px; border-radius: 4px;
+  display: flex; align-items: center; padding: 0 10px;
+  font-size: .7rem; color: var(--text-muted);
+  margin: 0 12px;
+}
+.tv-screen { padding: 20px; background: #F0F5FF; min-height: 180px; display: flex; flex-direction: column; gap: 10px; }
+.tv-row { display: flex; gap: 10px; }
+.tv-panel {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 14px;
+  flex: 1;
+}
+.tv-panel-label { font-size: .65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 8px; }
+.tv-line { height: 7px; border-radius: 3px; background: var(--blue-mid); margin-bottom: 6px; }
+.tv-line-short { width: 60%; }
+.tv-line-blue { background: var(--blue); opacity: .4; }
+.tv-conn-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #E6FAF0; color: #1A7340;
+  font-size: .7rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px;
+  border: 1px solid #B0E8C8;
+}
+.tv-conn-dot { width: 6px; height: 6px; background: #28C840; border-radius: 50%; animation: pulse-dot 1.5s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+.stats-strip {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.stat-cell { padding: 20px 16px; text-align: center; border-right: 1px solid var(--border); }
+.stat-cell:last-child { border-right: none; }
+.stat-num { font-size: 1.55rem; font-weight: 800; color: var(--blue); line-height: 1; }
+.stat-lbl { font-size: .72rem; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
+
+/* ── SECTIONS ── */
+.section { padding: 88px 48px; max-width: 1280px; margin: 0 auto; }
+.section-sm { padding: 64px 48px; }
+.section-full { padding: 88px 48px; }
+.section-bg { background: var(--bg-soft); }
+.section-blue { background: linear-gradient(135deg, #0A66C8 0%, #6B3FA0 100%); }
+
+.section-label {
+  font-size: .72rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--blue);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 800; line-height: 1.18;
+  letter-spacing: -.4px; color: var(--text);
+  margin-bottom: 16px;
+}
+.section-title em { font-style: normal; color: var(--blue); }
+.section-sub {
+  font-size: 1rem; color: var(--text-mid);
+  max-width: 560px; line-height: 1.7;
+}
+.section-header { margin-bottom: 56px; }
+.section-header-center { text-align: center; }
+.section-header-center .section-sub { margin: 0 auto; }
+
+/* ── REMOTE FEATURE BAND ── */
+.feature-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.feature-band.reverse { direction: rtl; }
+.feature-band.reverse > * { direction: ltr; }
+
+.feature-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin: 28px 0 36px; }
+.feature-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: .92rem; color: var(--text-mid); line-height: 1.5;
+}
+.fi-icon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border-radius: 8px; background: var(--blue-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem;
+}
+.fi-text strong { display: block; font-size: .9rem; color: var(--text); font-weight: 600; }
+
+/* ── PLANS ── */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.plan {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  position: relative;
+  transition: box-shadow .2s, border-color .2s, transform .2s;
+}
+.plan:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.plan.popular {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(10,102,200,.08), var(--shadow-md);
+}
+.plan-popular-badge {
+  position: absolute;
+  top: -13px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: #fff; font-size: .7rem; font-weight: 700;
+  padding: 4px 14px; border-radius: 100px;
+  letter-spacing: .8px; white-space: nowrap;
+}
+.plan-name { font-size: .8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.plan-price { font-size: 2.6rem; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 4px; }
+.plan-price sup { font-size: 1.1rem; vertical-align: top; margin-top: 8px; font-weight: 700; color: var(--text-mid); }
+.plan-price sub { font-size: .85rem; color: var(--text-muted); font-weight: 500; }
+.plan-desc { font-size: .85rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.plan-features li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .85rem; color: var(--text-mid);
+}
+.pf-check {
+  width: 18px; height: 18px; flex-shrink: 0;
+  background: var(--blue-light); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); font-size: .65rem; font-weight: 900;
+}
+.plan-btn {
+  display: block; width: 100%; padding: 12px;
+  text-align: center; font-weight: 700; font-size: .9rem;
+  border-radius: 9px; cursor: pointer; text-decoration: none;
+  transition: all .15s; border: 1.5px solid var(--border);
+  background: transparent; color: var(--text);
+}
+.plan-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+.plan-btn.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+.plan-btn.primary:hover { background: var(--blue-dark); box-shadow: var(--shadow-blue); }
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+.svc-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  transition: box-shadow .2s, transform .2s;
+}
+.svc-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.svc-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: var(--blue-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+.svc-title { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.svc-desc { font-size: .83rem; color: var(--text-muted); line-height: 1.65; }
+.svc-price {
+  display: inline-block; margin-top: 14px;
+  font-size: .78rem; font-weight: 700; color: var(--blue);
+  background: var(--blue-light); padding: 4px 12px;
+  border-radius: 100px;
+}
+
+/* ── PROCESS ── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 32px;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px; left: 14%; right: 14%;
+  height: 1.5px;
+  background: var(--border);
+  z-index: 0;
+}
+.proc-step { text-align: center; position: relative; z-index: 1; }
+.proc-num {
+  width: 56px; height: 56px;
+  background: #fff;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 1.1rem; font-weight: 800; color: var(--blue);
+  box-shadow: var(--shadow-sm);
+}
+.proc-title { font-size: .9rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.proc-desc { font-size: .8rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.testi-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+}
+.testi-stars { color: #F6B700; font-size: .95rem; margin-bottom: 14px; }
+.testi-text { font-size: .88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 10px; }
+.testi-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: .85rem;
+}
+.testi-name { font-size: .85rem; font-weight: 700; color: var(--text); }
+.testi-role { font-size: .75rem; color: var(--text-muted); }
+
+/* ── FORM SECTION ── */
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 0;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.form-sidebar {
+  background: linear-gradient(160deg, #0A66C8, #6B3FA0);
+  padding: 48px 36px;
+  color: #fff;
+  display: flex; flex-direction: column; gap: 28px;
+}
+.form-sidebar h2 { font-size: 1.5rem; font-weight: 800; line-height: 1.3; margin-bottom: 4px; }
+.form-sidebar p { font-size: .88rem; opacity: .85; line-height: 1.6; }
+.sidebar-item { display: flex; gap: 14px; align-items: flex-start; }
+.sidebar-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(255,255,255,.15);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.sidebar-text h4 { font-size: .88rem; font-weight: 700; margin-bottom: 2px; }
+.sidebar-text p { font-size: .78rem; opacity: .75; }
+.sidebar-wa {
+  margin-top: auto;
+  background: rgba(37,211,102,.15);
+  border: 1px solid rgba(37,211,102,.35);
+  border-radius: 12px;
+  padding: 16px;
+}
+.sidebar-wa p { font-size: .8rem; color: rgba(255,255,255,.85); margin-bottom: 10px; }
+.wa-btn-full {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--green); color: #fff;
+  text-decoration: none; padding: 11px;
+  border-radius: 9px; font-weight: 700; font-size: .88rem;
+  transition: opacity .15s, box-shadow .15s;
+}
+.wa-btn-full:hover { opacity: .9; box-shadow: 0 6px 20px rgba(37,211,102,.4); }
+
+.form-panel { padding: 48px 44px; }
+.form-panel h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 24px; color: var(--text); }
+.svc-toggle {
+  display: flex; gap: 0;
+  background: var(--bg-soft);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.tog-btn {
+  flex: 1; padding: 10px;
+  border: none; background: transparent;
+  color: var(--text-muted); font-family: 'Inter',sans-serif;
+  font-size: .83rem; font-weight: 600; cursor: pointer;
+  transition: all .15s;
+}
+.tog-btn.active {
+  background: var(--blue); color: #fff;
+  border-radius: 8px; margin: 2px;
+  box-shadow: var(--shadow-sm);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+label { font-size: .75rem; font-weight: 600; color: var(--text-muted); letter-spacing: .5px; text-transform: uppercase; }
+input, select, textarea {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 9px; padding: 11px 14px;
+  color: var(--text); font-family: 'Inter',sans-serif;
+  font-size: .9rem; outline: none;
+  transition: border-color .15s, box-shadow .15s; width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(10,102,200,.12);
+}
+select option { background: #fff; }
+textarea { resize: vertical; min-height: 88px; }
+.form-submit {
+  width: 100%; padding: 14px;
+  border: none; border-radius: 9px;
+  background: var(--blue); color: #fff;
+  font-family: 'Inter',sans-serif; font-size: .95rem;
+  font-weight: 700; cursor: pointer;
+  transition: background .15s, box-shadow .15s, transform .15s;
+  margin-top: 4px;
+}
+.form-submit:hover { background: var(--blue-dark); box-shadow: var(--shadow-blue); transform: translateY(-1px); }
+.form-note { font-size: .75rem; color: var(--text-muted); text-align: center; margin-top: 10px; }
+.success-msg {
+  display: none; text-align: center; padding: 20px;
+  background: #E6FAF0; border: 1px solid #B0E8C8;
+  border-radius: 10px; margin-top: 14px;
+}
+.success-msg.show { display: block; }
+.success-msg h4 { color: #1A7340; font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+.success-msg p { font-size: .82rem; color: #2D6A4F; }
+
+/* ── CTA BAND (blue) ── */
+.cta-band {
+  text-align: center;
+  color: #fff;
+  padding: 88px 48px;
+}
+.cta-band h2 { font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 800; margin-bottom: 12px; letter-spacing: -.3px; }
+.cta-band p { font-size: 1rem; opacity: .85; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-cta-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: #fff; color: var(--blue);
+  font-weight: 700; font-size: .95rem; border-radius: 9px;
+  text-decoration: none; transition: box-shadow .15s, transform .15s;
+}
+.btn-cta-white:hover { box-shadow: 0 8px 24px rgba(0,0,0,.18); transform: translateY(-1px); }
+.btn-cta-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; background: transparent; color: #fff;
+  font-weight: 700; font-size: .95rem; border-radius: 9px;
+  text-decoration: none; border: 2px solid rgba(255,255,255,.5);
+  transition: border-color .15s, background .15s;
+}
+.btn-cta-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0D1117;
+  padding: 56px 48px 32px;
+}
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand { max-width: 260px; }
+.footer-logo-text {
+  font-size: 1.2rem; font-weight: 800; color: #fff;
+  display: flex; align-items: center; gap: 9px;
+  margin-bottom: 14px; text-decoration: none;
+}
+.footer-logo-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.footer-brand p { font-size: .83rem; color: #64748B; line-height: 1.7; }
+.footer-col h4 { font-size: .8rem; font-weight: 700; color: #94A3B8; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: .85rem; color: #64748B; text-decoration: none; margin-bottom: 10px; transition: color .15s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  max-width: 1280px; margin: 0 auto;
+  border-top: 1px solid #1E293B;
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom p { font-size: .78rem; color: #475569; }
+
+/* ── FLOAT WA ── */
+.float-wa {
+  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  width: 58px; height: 58px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.65rem; text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,.45);
+  animation: wa-pulse 2.5s ease-in-out infinite;
+  transition: transform .2s;
+}
+.float-wa:hover { transform: scale(1.08); }
+@keyframes wa-pulse {
+  0%,100%{ box-shadow: 0 6px 24px rgba(37,211,102,.45); }
+  50%{ box-shadow: 0 6px 36px rgba(37,211,102,.75), 0 0 0 8px rgba(37,211,102,.1); }
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  #hero { grid-template-columns: 1fr; padding: 60px 28px; }
+  .hero-visual { display: none; }
+  .feature-band { grid-template-columns: 1fr; gap: 40px; }
+  .feature-band.reverse { direction: ltr; }
+  .plans-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-steps::before { display: none; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-center, .btn-ghost { display: none; }
+  .section, .section-full, .section-sm { padding: 60px 20px; }
+  .form-wrapper { grid-template-columns: 1fr; }
+  .form-sidebar { padding: 32px 24px; }
+  .form-panel { padding: 32px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+  .cta-band { padding: 60px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">🖱️</div>
+    CompuClick
+  </a>
+  <ul class="nav-center">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#planes">Planes</a></li>
+    <li><a href="#proceso">Cómo funciona</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="btn-ghost" href="#contacto">Iniciar sesión</a>
+    <a class="btn-wa-nav" href="https://wa.me/1234567890?text=Hola!%20Quiero%20soporte%20remoto" target="_blank">📲 WhatsApp</a>
+    <a class="btn-nav-primary" href="#contacto">Soporte ahora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="background:linear-gradient(160deg,#F0F5FF 0%,#EEF4FF 55%,#F5EFFF 100%);">
+<section id="hero" style="padding:90px 48px 80px; max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+  <div>
+    <div class="hero-eyebrow reveal"><span></span> Soporte técnico remoto · 365 días · Respuesta &lt;60 min</div>
+    <h1 class="hero-title reveal">Tu equipo funcionando a tope — <em>sin salir de casa.</em></h1>
+    <p class="hero-sub reveal">CompuClick se conecta de forma segura a tu computadora y resuelve virus, lentitud, errores y configuraciones en tiempo real. El 95% de los problemas, resueltos en la primera sesión.</p>
+    <div class="hero-actions reveal">
+      <a class="btn-primary" href="#contacto">🌐 Soporte Remoto Ahora</a>
+      <a class="btn-whatsapp" href="https://wa.me/1234567890?text=Hola!%20Quiero%20soporte%20remoto%20con%20CompuClick" target="_blank">📲 WhatsApp</a>
+      <a class="btn-secondary" href="#planes">Ver planes →</a>
+    </div>
+    <div class="hero-trust reveal">
+      <div class="trust-item"><div class="trust-check">✓</div> Conexión encriptada</div>
+      <div class="trust-item"><div class="trust-check">✓</div> Tú ves todo en pantalla</div>
+      <div class="trust-item"><div class="trust-check">✓</div> Garantía de satisfacción</div>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="tv-mockup">
+      <div class="tv-titlebar">
+        <div class="tv-dots">
+          <div class="tv-dot tv-dot-r"></div>
+          <div class="tv-dot tv-dot-y"></div>
+          <div class="tv-dot tv-dot-g"></div>
+        </div>
+        <div class="tv-bar">compuclick.remote — sesión segura</div>
+        <div class="tv-conn-badge"><div class="tv-conn-dot"></div> Conectado</div>
+      </div>
+      <div class="tv-screen">
+        <div class="tv-row">
+          <div class="tv-panel">
+            <div class="tv-panel-label">Estado del sistema</div>
+            <div class="tv-line tv-line-blue"></div>
+            <div class="tv-line tv-line-short"></div>
+            <div class="tv-line"></div>
+          </div>
+          <div class="tv-panel">
+            <div class="tv-panel-label">Diagnóstico</div>
+            <div class="tv-line"></div>
+            <div class="tv-line tv-line-blue tv-line-short"></div>
+            <div class="tv-line"></div>
+          </div>
+        </div>
+        <div class="tv-panel">
+          <div class="tv-panel-label">Actividad en tiempo real</div>
+          <div class="tv-line tv-line-blue" style="width:80%"></div>
+          <div class="tv-line tv-line-short"></div>
+          <div class="tv-line" style="width:90%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-strip">
+      <div class="stat-cell"><div class="stat-num">+2K</div><div class="stat-lbl">Sesiones remotas</div></div>
+      <div class="stat-cell"><div class="stat-num">95%</div><div class="stat-lbl">Resuelto en 1ª sesión</div></div>
+      <div class="stat-cell"><div class="stat-num">&lt;60m</div><div class="stat-lbl">Tiempo promedio</div></div>
+      <div class="stat-cell"><div class="stat-num">365</div><div class="stat-lbl">Días disponible</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- REMOTE FEATURE SECTION -->
+<div style="background:#F7F9FC; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0;">
+<section id="servicios" class="section">
+  <div class="feature-band">
+    <div class="reveal">
+      <div class="section-label">Soporte Remoto</div>
+      <h2 class="section-title">Asistencia técnica <em>instantánea</em>, sin importar dónde estés</h2>
+      <p class="section-sub">Nos conectamos a tu equipo de forma encriptada en menos de 5 minutos. Trabajamos mientras tú observas, totalmente transparente.</p>
+      <ul class="feature-list">
+        <li>
+          <div class="fi-icon">🔒</div>
+          <div class="fi-text"><strong>Conexión encriptada punto a punto</strong>Nunca almacenamos datos de tu equipo. Acceso sólo con tu permiso.</div>
+        </li>
+        <li>
+          <div class="fi-icon">👁️</div>
+          <div class="fi-text"><strong>Tú ves cada acción en pantalla</strong>Transparencia total. Puedes cerrar la sesión en cualquier momento.</div>
+        </li>
+        <li>
+          <div class="fi-icon">⚡</div>
+          <div class="fi-text"><strong>Resolución en menos de 60 minutos</strong>El 95% de los problemas se solucionan en la primera sesión.</div>
+        </li>
+        <li>
+          <div class="fi-icon">🛡️</div>
+          <div class="fi-text"><strong>Garantía de satisfacción</strong>Si no resolvemos el problema, te devolvemos el dinero.</div>
+        </li>
+      </ul>
+      <a class="btn-primary" href="#contacto">Iniciar sesión remota →</a>
+    </div>
+    <div class="reveal">
+      <div class="tv-mockup" style="box-shadow:0 24px 60px rgba(10,102,200,.12);">
+        <div class="tv-titlebar">
+          <div class="tv-dots">
+            <div class="tv-dot tv-dot-r"></div>
+            <div class="tv-dot tv-dot-y"></div>
+            <div class="tv-dot tv-dot-g"></div>
+          </div>
+          <div class="tv-bar">Sesión remota segura en progreso…</div>
+          <div class="tv-conn-badge"><div class="tv-conn-dot"></div> En vivo</div>
+        </div>
+        <div class="tv-screen" style="min-height:240px; gap:14px;">
+          <div style="display:flex; align-items:center; gap:10px; background:#fff; border-radius:8px; padding:12px 14px; border:1px solid #E2E8F0;">
+            <span style="font-size:1.3rem;">🛡️</span>
+            <div>
+              <div style="font-size:.75rem; font-weight:700; color:#1A1A2E;">Eliminando amenaza detectada</div>
+              <div style="font-size:.7rem; color:#718096;">Trojan.Win32.Malware → Cuarentena</div>
+            </div>
+            <div style="margin-left:auto; font-size:.7rem; font-weight:700; color:#28C840;">Completado</div>
+          </div>
+          <div style="background:#fff; border-radius:8px; padding:14px; border:1px solid #E2E8F0;">
+            <div style="font-size:.7rem; font-weight:700; color:#718096; margin-bottom:10px; text-transform:uppercase; letter-spacing:.8px;">Diagnóstico del sistema</div>
+            <div style="display:flex; gap:8px; margin-bottom:8px; align-items:center;">
+              <div style="font-size:.75rem; color:#1A1A2E; width:80px;">CPU</div>
+              <div style="flex:1; height:6px; background:#E2E8F0; border-radius:3px; overflow:hidden;"><div style="height:100%; width:32%; background:#0A66C8; border-radius:3px;"></div></div>
+              <div style="font-size:.72rem; color:#718096;">32%</div>
+            </div>
+            <div style="display:flex; gap:8px; margin-bottom:8px; align-items:center;">
+              <div style="font-size:.75rem; color:#1A1A2E; width:80px;">RAM</div>
+              <div style="flex:1; height:6px; background:#E2E8F0; border-radius:3px; overflow:hidden;"><div style="height:100%; width:61%; background:#0A66C8; border-radius:3px;"></div></div>
+              <div style="font-size:.72rem; color:#718096;">61%</div>
+            </div>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <div style="font-size:.75rem; color:#1A1A2E; width:80px;">Disco</div>
+              <div style="flex:1; height:6px; background:#E2E8F0; border-radius:3px; overflow:hidden;"><div style="height:100%; width:78%; background:#F6B700; border-radius:3px;"></div></div>
+              <div style="font-size:.72rem; color:#718096;">78%</div>
+            </div>
+          </div>
+          <div class="tv-conn-badge" style="align-self:flex-start; font-size:.75rem; padding:6px 14px;">
+            <div class="tv-conn-dot"></div> Técnico CompuClick conectado
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- OTHER SERVICES -->
+<section class="section">
+  <div class="section-header section-header-center reveal">
+    <div class="section-label">Todos nuestros servicios</div>
+    <h2 class="section-title">Soporte remoto primero, <em>presencial cuando es necesario</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card reveal">
+      <div class="svc-icon">🌐</div>
+      <div class="svc-title">Soporte Remoto Express</div>
+      <p class="svc-desc">Conexión segura a tu equipo en &lt;5 minutos. Virus, lentitud, software, configuraciones. Resuelto sin que te muevas.</p>
+      <span class="svc-price">Desde $360 MXN</span>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">🛡️</div>
+      <div class="svc-title">Eliminación de Virus & Malware</div>
+      <p class="svc-desc">Limpieza total de amenazas: virus, ransomware, spyware, adware. Instalamos protección permanente y actualizaciones.</p>
+      <span class="svc-price">Desde $600 MXN</span>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">⚡</div>
+      <div class="svc-title">Optimización & Rendimiento</div>
+      <p class="svc-desc">Tu equipo como nuevo: arranque rápido, limpieza de programas innecesarios, actualización de controladores y registro.</p>
+      <span class="svc-price">Desde $540 MXN</span>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">🔧</div>
+      <div class="svc-title">Reparación de Hardware</div>
+      <p class="svc-desc">Reemplazo de piezas: RAM, disco SSD/HDD, pantalla, teclado, batería, puertos. Diagnóstico gratuito incluido.</p>
+      <span class="svc-price">Desde $450 MXN</span>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">💾</div>
+      <div class="svc-title">Recuperación de Datos</div>
+      <p class="svc-desc">Rescatamos archivos perdidos por formateo, falla del disco o virus. Fotos, documentos, proyectos y bases de datos.</p>
+      <span class="svc-price">Desde $900 MXN</span>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-icon">🏠</div>
+      <div class="svc-title">Visita a Domicilio</div>
+      <p class="svc-desc">Cuando el problema requiere presencia física: un técnico certificado llega a tu casa u oficina el mismo día.</p>
+      <span class="svc-price">Desde $300 MXN</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<div style="background:#F7F9FC; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0;">
+<section id="planes" class="section">
+  <div class="section-header section-header-center reveal">
+    <div class="section-label">Planes de Soporte Remoto</div>
+    <h2 class="section-title">Elige el plan que se adapta a ti</h2>
+    <p class="section-sub">Sin contratos forzosos. Sin letras chicas. Paga solo por lo que usas o ahorra con nuestros paquetes.</p>
+  </div>
+  <div class="plans-grid">
+    <div class="plan reveal">
+      <div class="plan-name">Básico</div>
+      <div class="plan-price"><sup>$</sup>360<sub> MXN</sub></div>
+      <p class="plan-desc">1 sesión de soporte remoto de hasta 1 hora. Ideal para resolver un problema puntual.</p>
+      <ul class="plan-features">
+        <li><div class="pf-check">✓</div> 1 sesión remota (hasta 1hr)</li>
+        <li><div class="pf-check">✓</div> Diagnóstico completo</li>
+        <li><div class="pf-check">✓</div> Conexión encriptada</li>
+        <li><div class="pf-check">✓</div> Soporte por WhatsApp 24hrs</li>
+      </ul>
+      <a class="plan-btn" href="#contacto">Contratar</a>
+    </div>
+    <div class="plan popular reveal">
+      <div class="plan-popular-badge">MÁS POPULAR</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price"><sup>$</sup>750<sub> MXN</sub></div>
+      <p class="plan-desc">3 sesiones + soporte prioritario. Para hogares y pequeños negocios que necesitan apoyo continuo.</p>
+      <ul class="plan-features">
+        <li><div class="pf-check">✓</div> 3 sesiones remotas</li>
+        <li><div class="pf-check">✓</div> Atención prioritaria</li>
+        <li><div class="pf-check">✓</div> Monitoreo básico del equipo</li>
+        <li><div class="pf-check">✓</div> Antivirus incluido (30 días)</li>
+        <li><div class="pf-check">✓</div> Garantía de satisfacción</li>
+      </ul>
+      <a class="plan-btn primary" href="#contacto">Contratar</a>
+    </div>
+    <div class="plan reveal">
+      <div class="plan-name">Business</div>
+      <div class="plan-price"><sup>$</sup>1,800<sub>/mes</sub></div>
+      <p class="plan-desc">Sesiones ilimitadas durante el mes. Para negocios que necesitan soporte técnico constante.</p>
+      <ul class="plan-features">
+        <li><div class="pf-check">✓</div> Sesiones remotas ilimitadas</div></li>
+        <li><div class="pf-check">✓</div> Técnico asignado exclusivo</li>
+        <li><div class="pf-check">✓</div> Monitoreo proactivo 24/7</li>
+        <li><div class="pf-check">✓</div> 1 visita a domicilio incluida</li>
+        <li><div class="pf-check">✓</div> Reporte mensual de salud</li>
+      </ul>
+      <a class="plan-btn" href="#contacto">Contratar</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="proceso" class="section">
+  <div class="section-header section-header-center reveal">
+    <div class="section-label">Cómo funciona</div>
+    <h2 class="section-title">Del problema a la solución en <em>4 pasos</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="proc-step reveal">
+      <div class="proc-num">1</div>
+      <div class="proc-title">Contáctanos</div>
+      <p class="proc-desc">Por WhatsApp, formulario o teléfono. Cuéntanos qué está pasando con tu equipo.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">2</div>
+      <div class="proc-title">Conexión remota</div>
+      <p class="proc-desc">Te enviamos un enlace seguro. En menos de 5 minutos estamos conectados a tu equipo con tu permiso.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">3</div>
+      <div class="proc-title">Diagnóstico y solución</div>
+      <p class="proc-desc">Tú ves todo en pantalla. Trabajamos en vivo y te explicamos cada paso del proceso.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">4</div>
+      <div class="proc-title">Garantía 30 días</div>
+      <p class="proc-desc">Si el problema vuelve en 30 días, regresamos sin costo adicional. Tu satisfacción es nuestra prioridad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div style="background:#F7F9FC; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0;">
+<section class="section">
+  <div class="section-header section-header-center reveal">
+    <div class="section-label">Testimonios</div>
+    <h2 class="section-title">Lo que dicen nuestros <em>clientes</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Mi laptop estaba llena de virus y tardaba 20 minutos en encender. CompuClick la limpió por completo en menos de una hora desde remoto. Increíble servicio."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MG</div>
+        <div><div class="testi-name">María González</div><div class="testi-role">Contadora independiente</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Tenía un ransomware que bloqueó mis archivos de trabajo. En 45 minutos recuperaron todo y me instalaron protección. Vale cada peso del plan Business."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RL</div>
+        <div><div class="testi-name">Roberto López</div><div class="testi-role">Dueño de negocio</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"No tuve que cargar mi PC a ningún lado. Se conectaron, arreglaron el error de Windows y hasta optimizaron el rendimiento. Todo en la comodidad de mi casa."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AP</div>
+        <div><div class="testi-name">Ana Pérez</div><div class="testi-role">Diseñadora freelance</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CONTACT FORM -->
+<section id="contacto" class="section">
+  <div class="section-header section-header-center reveal">
+    <div class="section-label">Agenda tu servicio</div>
+    <h2 class="section-title">¿Listo para <em>solucionar</em>?</h2>
+  </div>
+  <div class="form-wrapper reveal">
+    <div class="form-sidebar">
+      <div>
+        <h2>Soporte remoto al instante</h2>
+        <p>Completa el formulario y un técnico se conecta a tu equipo en menos de 60 minutos.</p>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-icon">⚡</div>
+        <div class="sidebar-text"><h4>Respuesta en &lt;60 min</h4><p>Confirmamos tu sesión casi de inmediato</p></div>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-icon">🔒</div>
+        <div class="sidebar-text"><h4>Conexión 100% segura</h4><p>Encriptada, tú tienes el control total</p></div>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-icon">👁️</div>
+        <div class="sidebar-text"><h4>Ves todo en pantalla</h4><p>Cero acciones ocultas, transparencia total</p></div>
+      </div>
+      <div class="sidebar-item">
+        <div class="sidebar-icon">💳</div>
+        <div class="sidebar-text"><h4>Múltiples formas de pago</h4><p>Efectivo, transferencia o tarjeta</p></div>
+      </div>
+      <div class="sidebar-wa">
+        <p>💬 ¿Prefieres escribirnos directamente?</p>
+        <a class="wa-btn-full" href="https://wa.me/1234567890?text=Hola!%20Quiero%20soporte%20remoto%20con%20CompuClick" target="_blank">📲 Abrir WhatsApp</a>
+      </div>
+    </div>
+    <div class="form-panel">
+      <h3>📋 Solicitar servicio</h3>
+      <div class="svc-toggle">
+        <button class="tog-btn" id="btn-domicilio" onclick="toggleSvc('domicilio')">🏠 Visita a Domicilio</button>
+        <button class="tog-btn active" id="btn-remoto" onclick="toggleSvc('remoto')">🌐 Soporte Remoto</button>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" id="f-nombre" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" id="f-tel" placeholder="+52 000 000 0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" id="f-email" placeholder="tu@correo.com">
+      </div>
+      <div id="campo-dir" class="form-group" style="display:none;">
+        <label>Dirección</label>
+        <input type="text" id="f-dir" placeholder="Calle, número, colonia, ciudad">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Tipo de equipo</label>
+          <select id="f-equipo">
+            <option value="">Selecciona...</option>
+            <option>Laptop Windows</option>
+            <option>PC de escritorio</option>
+            <option>iMac / MacBook</option>
+            <option>Tablet</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tipo de problema</label>
+          <select id="f-problema">
+            <option value="">Selecciona...</option>
+            <option>Lento / tarda en iniciar</option>
+            <option>Virus / Malware</option>
+            <option>No enciende</option>
+            <option>Pantalla rota</option>
+            <option>Recuperación de datos</option>
+            <option>Instalación de software</option>
+            <option>Error del sistema / Windows</option>
+            <option>Otro</option>
+          </select>
+        </div>
+      </div>
+      <div id="campo-fecha" class="form-group" style="display:none;">
+        <label>Fecha y hora preferida</label>
+        <input type="datetime-local" id="f-fecha">
+      </div>
+      <div class="form-group">
+        <label>Describe tu problema</label>
+        <textarea id="f-desc" placeholder="Ej: mi laptop tarda mucho en arrancar, sale un aviso de virus, el programa X no abre..."></textarea>
+      </div>
+      <button class="form-submit" id="form-btn" onclick="submitForm()">🌐 Solicitar Soporte Remoto</button>
+      <p class="form-note">🔒 Tus datos están protegidos. Solo los usamos para contactarte.</p>
+      <div class="success-msg" id="success-msg">
+        <h4>✅ ¡Solicitud recibida!</h4>
+        <p>Te contactamos en menos de 60 minutos para conectarnos. Revisa también tu WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="section-blue">
+  <div class="cta-band">
+    <h2>¿Tu equipo tiene un problema ahora mismo?</h2>
+    <p>No esperes. Nuestros técnicos están disponibles ahora y pueden conectarse a tu equipo en minutos.</p>
+    <div class="cta-actions">
+      <a class="btn-cta-white" href="#contacto">🌐 Soporte Remoto Ahora</a>
+      <a class="btn-cta-outline" href="https://wa.me/1234567890?text=Hola!%20Necesito%20soporte%20remoto%20urgente" target="_blank">📲 WhatsApp Urgente</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="footer-logo-text" href="#">
+        <div class="footer-logo-icon">🖱️</div>
+        CompuClick
+      </a>
+      <p>Soporte técnico remoto y reparación de computadoras. Rápido, seguro y garantizado.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <a href="#servicios">Soporte Remoto</a>
+      <a href="#servicios">Eliminación de Virus</a>
+      <a href="#servicios">Optimización</a>
+      <a href="#servicios">Reparación Hardware</a>
+      <a href="#servicios">Recuperación de Datos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Planes</h4>
+      <a href="#planes">Plan Básico</a>
+      <a href="#planes">Plan Pro</a>
+      <a href="#planes">Plan Business</a>
+      <a href="#contacto">Solicitar cotización</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/1234567890" target="_blank">📲 WhatsApp</a>
+      <a href="#contacto">Formulario de contacto</a>
+      <a href="#proceso">Cómo funciona</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 CompuClick. Todos los derechos reservados.</p>
+    <p>Soporte técnico profesional · Disponible 365 días al año</p>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a class="float-wa" href="https://wa.me/1234567890?text=Hola!%20Quiero%20soporte%20remoto%20con%20CompuClick" target="_blank" title="Escríbenos por WhatsApp">📲</a>
+
+<script>
+/* Scroll reveal */
+const revealEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: .1 });
+revealEls.forEach(el => revObs.observe(el));
+
+/* Toggle */
+function toggleSvc(type) {
+  const d = document.getElementById('btn-domicilio');
+  const r = document.getElementById('btn-remoto');
+  const dir = document.getElementById('campo-dir');
+  const fecha = document.getElementById('campo-fecha');
+  const btn = document.getElementById('form-btn');
+  if(type === 'domicilio'){
+    d.classList.add('active'); r.classList.remove('active');
+    dir.style.display=''; fecha.style.display='';
+    btn.textContent='🏠 Solicitar Visita a Domicilio';
+  } else {
+    r.classList.add('active'); d.classList.remove('active');
+    dir.style.display='none'; fecha.style.display='none';
+    btn.textContent='🌐 Solicitar Soporte Remoto';
+  }
+}
+
+/* Submit */
+function submitForm(){
+  const nombre = document.getElementById('f-nombre').value.trim();
+  const tel = document.getElementById('f-tel').value.trim();
+  const equipo = document.getElementById('f-equipo').value;
+  const problema = document.getElementById('f-problema').value;
+  if(!nombre||!tel||!equipo||!problema){
+    alert('Por favor completa: Nombre, Teléfono, Tipo de equipo y Tipo de problema.');
+    return;
+  }
+  const isRemoto = document.getElementById('btn-remoto').classList.contains('active');
+  const tipo = isRemoto ? 'Soporte Remoto' : 'Visita a Domicilio';
+  const dir = document.getElementById('f-dir').value;
+  const fecha = document.getElementById('f-fecha').value;
+  const desc = document.getElementById('f-desc').value;
+  let msg = `Hola CompuClick! 👋\n\n*Nueva Solicitud*\nNombre: ${nombre}\nTeléfono: ${tel}\nServicio: ${tipo}\nEquipo: ${equipo}\nProblema: ${problema}`;
+  if(!isRemoto && dir) msg += `\nDirección: ${dir}`;
+  if(!isRemoto && fecha) msg += `\nFecha: ${fecha}`;
+  if(desc) msg += `\nDetalle: ${desc}`;
+  document.getElementById('success-msg').classList.add('show');
+  const btn = document.getElementById('form-btn');
+  btn.textContent='✅ Enviado';
+  btn.style.background='#1A7340';
+  setTimeout(() => window.open(`https://wa.me/1234567890?text=${encodeURIComponent(msg)}`,'_blank'), 700);
+}
+</script>
+</body>
+</html>
 
